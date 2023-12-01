@@ -24,14 +24,14 @@ int main(void)
   // Run kernel on 1M elements on the CPU
 
   std::chrono::time_point<std::chrono::high_resolution_clock> start = std::chrono::high_resolution_clock::now();
-  
+
   add(N, x, y);
-	
+
   std::chrono::time_point<std::chrono::high_resolution_clock> end = std::chrono::high_resolution_clock::now();
-  
+
   std::chrono::duration<double> elapsedTime = end - start;
 
-  std::cout << "Time elapsed: " << elapsedTime.count() << std::endl;
+  std::cout << "Time elapsed: " << elapsedTime.count() * 1000 << " milliseconds." << std::endl;
 
   // Check for errors (all values should be 3.0f)
   float maxError = 0.0f;
