@@ -14,8 +14,9 @@ int main(void)
 {
   int N = 1<<29;
   float *x, *y;
-  int blockSize = 256;
-  int numBlocks = (N + blockSize - 1) / blockSize;
+
+  int blockSize = 256; // Code added from out of the blocks
+  int numBlocks = (N + blockSize - 1) / blockSize; // code added from out of the blocks
 
 
   // Allocate Unified Memory – accessible from CPU or GPU
@@ -34,6 +35,8 @@ int main(void)
   // Wait for GPU to finish before accessing on host
   cudaDeviceSynchronize();
 
+  std::cout << "The thread blocks is: " << numBlocks << std::endl;
+
   // Check for errors (all values should be 3.0f)
   float maxError = 0.0f;
   for (int i = 0; i < N; i++)
@@ -47,4 +50,3 @@ int main(void)
   return 0;
 }
 
-CUDA files have the file extension .

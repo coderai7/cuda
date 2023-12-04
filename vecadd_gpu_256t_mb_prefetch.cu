@@ -38,6 +38,8 @@ int main(void)
   // Wait for GPU to finish before accessing on host
   cudaDeviceSynchronize();
 
+  std::cout << "The thread block is: " << numBlocks << std::endl;
+
   // Check for errors (all values should be 3.0f)
   float maxError = 0.0f;
   for (int i = 0; i < N; i++)
@@ -47,8 +49,6 @@ int main(void)
   // Free memory
   cudaFree(x);
   cudaFree(y);
-  
+
   return 0;
 }
-
-CUDA files have the file extension .
